@@ -21,6 +21,5 @@ public class CropVariety {
     private String varietyName;
     @Enumerated(EnumType.STRING)
 
-
     private Status status;
 }
