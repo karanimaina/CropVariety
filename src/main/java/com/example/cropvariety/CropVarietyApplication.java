@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CropVarietyApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CropVarietyApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CropVarietyApplication.class, args);
+    }
 
 }
