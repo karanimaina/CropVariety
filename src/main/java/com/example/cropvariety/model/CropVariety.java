@@ -22,4 +22,6 @@ public class CropVariety {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+
+
 }
