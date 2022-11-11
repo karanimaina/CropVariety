@@ -23,5 +23,4 @@ public class CropVariety {
     private Status status;
 
 
-
 }
