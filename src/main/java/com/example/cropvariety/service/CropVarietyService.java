@@ -12,15 +12,27 @@ import org.springframework.stereotype.Service;
 public class CropVarietyService {
     private final CropVarietyRepository cropVarietyRepository;
 
-    public CropVariety addCropVariety(CropVarietyDto cropVarietyDto){
-    CropVariety cropVariety = cropVarietyRepository.findByCropId(cropVarietyDto.getCropId());
+    public CropVariety editCropVariety(long id,CropVarietyDto cropVarietyDto){
+    CropVariety cropVariety = cropVarietyRepository.findById(id).orElse(null);
     if (cropVariety  == null){
-        CropVariety cropVariety1 = new CropVariety();
-        cropVariety1.setCropId(cropVarietyDto.getCropId());
-        cropVariety1.setVarietyName(cropVarietyDto.getVarietyName());
-        cropVariety1.setStatus(cropVarietyDto.getStatus());
-        cropVarietyRepository.save(cropVariety1);
+        throw new CropVarietyException("crop does  not exist");
     }
-    throw new CropVarietyException("crop already exist");
+        cropVariety.setCropId(cropVarietyDto.getCropId());
+        cropVariety.setVarietyName(cropVarietyDto.getVarietyName());
+        cropVariety.setStatus(cropVarietyDto.getStatus());
+        cropVarietyRepository.save(cropVariety);
+        return cropVariety;
+    }
+
+    public CropVariety addCropVariety(CropVarietyDto cropVarietyDto){
+        CropVariety cropVariety = cropVarietyRepository.findByCropId(cropVarietyDto.getCropId());
+        if (cropVariety  == null){
+            CropVariety cropVariety1 = new CropVariety();
+            cropVariety1.setCropId(cropVarietyDto.getCropId());
+            cropVariety1.setVarietyName(cropVarietyDto.getVarietyName());
+            cropVariety1.setStatus(cropVarietyDto.getStatus());
+            cropVarietyRepository.save(cropVariety1);
+        }
+        throw new CropVarietyException("crop already exist");
     }
 }
