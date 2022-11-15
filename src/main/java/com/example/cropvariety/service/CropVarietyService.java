@@ -7,6 +7,8 @@ import com.example.cropvariety.repo.CropVarietyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CropVarietyService {
@@ -34,5 +36,8 @@ public class CropVarietyService {
             cropVarietyRepository.save(cropVariety1);
         }
         throw new CropVarietyException("crop already exist");
+    }
+    public List<CropVariety>getAllCrops(){
+        return cropVarietyRepository.findAll();
     }
 }

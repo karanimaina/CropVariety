@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -27,4 +29,10 @@ public class CropVarietyController {
         CropVariety cropVariety  = cropVarietyService.editCropVariety(id,cropVarietyDto);
          return ResponseEntity.ok().body(UniversalResponse.builder().status(200).message("crop added").data(cropVariety).build());
      }
+
+    ResponseEntity<UniversalResponse>getAllCrops(){
+        List<CropVariety> cropVariety  = cropVarietyService.getAllCrops();
+        return ResponseEntity.ok().body(UniversalResponse.builder().status(200).message("crop added").data(cropVariety).build());
+    }
 }
+
