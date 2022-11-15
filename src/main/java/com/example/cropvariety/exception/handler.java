@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class handler {
     @ExceptionHandler(CropVarietyException.class)
     ResponseEntity<UniversalResponse>
+
 }
